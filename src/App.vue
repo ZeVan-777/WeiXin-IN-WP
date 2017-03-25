@@ -1,14 +1,18 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <p>
-      <router-link to="/foo">Go to Foo</router-link>
-      <router-link to="/bar">Go to Bar</router-link>
-    </p>
   </div>
 </template>
 
 
-<style>
+<style lang="less">
+  @import "../node_modules/muse-ui/less/colors.less";
 
+  .mu-tabs{
+    background-color: @grey800;
+  }
+
+  .mu-tab-active{
+    color: @green500
+  }
 </style>

@@ -14,24 +14,44 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader'
       },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]?[hash]'
-        }
-      }
+			{
+				test: /\.less$/,
+				use: [
+					'style-loader',
+					{ loader: 'css-loader', options: { importLoaders: 1 } },
+					'less-loader'
+				]
+			},
+			{
+				test: /muse-ui.src.*?js$/,
+				loader: 'babel-loader',
+				exclude: /node_modules/
+			},
+			{ test: /\.css$/, loader: "style-loader!css-loader" },
+			{
+				test: /\.js$/,
+				loader: 'babel-loader',
+				exclude: /node_modules/
+			},
+			{
+				test: /\.(png|jpg|gif|svg)$/,
+				loader: 'file-loader',
+				options: {
+					name: '[name].[ext]?[hash]'
+				}
+			}
     ]
   },
   resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    }
+		extensions: ['.js', '.vue', '.json'],
+		modules: [path.resolve(__dirname, './node_modules')],
+		alias: {
+			'vue$': 'vue/dist/vue.common.js',
+			'muse-components': 'muse-ui/src'
+		}
+	},
+  resolveLoader: {
+	  modules: [path.join(__dirname, './node_modules')]
   },
   devServer: {
     historyApiFallback: true,
