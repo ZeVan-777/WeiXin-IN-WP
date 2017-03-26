@@ -55,4 +55,8 @@
     color: white;
     background-color: @grey900;
   }
+
+  .mu-appbar-title {
+    font-size: 28px;
+  }
 </style>

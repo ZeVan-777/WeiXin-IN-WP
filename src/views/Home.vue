@@ -16,8 +16,8 @@ export default {
     },
   beforeRouteEnter (to, from, next) {
 		next(vm => {
-					vm.$bus.emit('setMenu', true);
-				})
+		    vm.$bus.emit('setMenu', true);
+        });
 	},
   beforeRouteLeave (to, from, next) {
     this.$bus.emit('setMenu', false);

@@ -1,18 +1,18 @@
 <template>
-    <mobile-tear-sheet class="add-person">
+    <div class="add-person">
         <mu-appbar title="添加朋友"></mu-appbar>
         <mu-list>
-            <mu-list-item title="搜号码">
+            <mu-list-item title="搜号码" disableRipple>
                 <mu-icon slot="left" value="person"/>
             </mu-list-item>
-            <mu-list-item title="添加手机联系人">
+            <mu-list-item title="添加手机联系人" disableRipple>
                 <mu-icon slot="left" value="contact_phone"/>
             </mu-list-item>
-            <mu-list-item title="添加微信公众号">
+            <mu-list-item title="添加微信公众号" disableRipple>
                 <mu-icon slot="left" value="toys"/>
             </mu-list-item>
         </mu-list>
-    </mobile-tear-sheet>
+    </div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-    <mu-tabs :value="activeTab" @change="handleTabChange" lineClass="hide" disableRipple>
+    <mu-tabs :value="activeTab" @change="handleTabChange" lineClass="hide">
         <mu-tab value="messages" icon="chat_bubble_outline" href="#/messages"/>
         <mu-tab value="contacts" icon="contacts" href="#/contacts"/>
         <mu-tab value="nearby" icon="near_me" href="#/nearby"/>
