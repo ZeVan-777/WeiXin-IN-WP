@@ -1,5 +1,5 @@
 <template>
-    <mu-tabs :value="activeTab" @change="handleTabChange" lineClass="hide">
+    <mu-tabs :value="activeTab" @change="handleTabChange" lineClass="hide" disableRipple>
         <mu-tab value="messages" icon="chat_bubble_outline" href="#/messages"/>
         <mu-tab value="contacts" icon="contacts" href="#/contacts"/>
         <mu-tab value="nearby" icon="near_me" href="#/nearby"/>
@@ -9,15 +9,15 @@
 
 <script>
 	export default {
-      name: 'top-nav',
-      data () {
-        return {
-          activeTab: 'messages'
-        }
-      },
-      methods: {
-	    handleTabChange (val) {
-          this.activeTab = val;
+			name: 'top-nav',
+			methods: {
+				handleTabChange (val) {
+					this.activeTab = val;
+				}
+			},
+      computed: {
+        activeTab () {
+        	return this.$route.name;
         }
       }
     }

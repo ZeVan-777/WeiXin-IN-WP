@@ -2,22 +2,19 @@
     <div class="bottom-menu">
         <mu-bottom-sheet :open="isPopup" @close="toggle" :sheetClass="{farther: isIcon}">
             <mu-list v-for="item in menuInfo.items" :key="item.name">
-                <mu-list-item :title="item.name"></mu-list-item>
+                <mu-list-item :title="item.name" disableRipple></mu-list-item>
             </mu-list>
         </mu-bottom-sheet>
         <div class="permanent-nav" @click="toggle" :style="{height: fixedHeight + 'px'}">
             <div class="bottom-horiz">
-                <template v-for="icon in menuInfo.icons">
-                    <div class="bottom-icon">
-                        <div class="circle">
-                            <mu-icon :value="icon.name"></mu-icon>
-                            <p class="icon-title" v-if="isPopup">{{ icon.title }}</p>
-                        </div>
+                <router-link class="bottom-icon"
+                             v-for="icon in menuInfo.icons" :key="icon.href"
+                             :to="{ path: icon.href}" @click.prevent>
+                    <div class="circle">
+                        <mu-icon :value="icon.name"></mu-icon>
+                        <p class="icon-title" v-if="isPopup">{{ icon.title }}</p>
                     </div>
-                </template>
-                <!--<div class="circle">-->
-                    <!--<mu-icon value="search"></mu-icon>-->
-                <!--</div>-->
+                </router-link>
             </div>
             <mu-icon value="more_horiz" class="more" :class="{only : !menuInfo.icons}"></mu-icon>
         </div>
@@ -31,23 +28,23 @@
       ],
       data () {
         return {
-          isPopup: false,
-          fixedHeight: 24,
-          isIcon: false
+          isPopup: false
         }
+      },
+      computed: {
+      	isIcon () {
+      		return !!this.menuInfo.icons
+        },
+        fixedHeight () {
+      		var initHeight = !!this.menuInfo.icons ? 34 : 24;
+      		return initHeight += this.isPopup ? 10 : 0;
+        },
+
       },
       methods: {
 		toggle () {
 		  this.isPopup = !this.isPopup;
-          this.fixedHeight += this.isPopup ? 10 : -10;
 		}
-      },
-      watch: {
-        menuInfo: function (val){
-          this.isIcon = !!val.icons;
-          this.fixedHeight = this.isIcon ? 34 : 24;
-
-        }
       }
 	}
 </script>
@@ -84,7 +81,8 @@
 
             margin: 5px 3%;
 
-            font-size: 1px;
+            font-size: 10px;
+            color: white;
         }
 
         .circle{

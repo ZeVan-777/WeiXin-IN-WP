@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <bottom-menu :menu-info="menuInfo"></bottom-menu>
+    <bottom-menu :menu-info="menuInfo" v-if="hasMenu"></bottom-menu>
   </div>
   </template>
 
@@ -10,20 +10,25 @@
   import ConfigMenu from './config.menu'
 
   export default {
-    data () {
-    return {
-
-  }
-  },
-  components: {
-  BottomMenu
-  },
-  computed: {
-  menuInfo: function () {
-  return ConfigMenu[this.$route.name]
-  }
-  }
-  }
+		data () {
+			return {
+              hasMenu: true
+            }
+		},
+		components: {
+			BottomMenu
+		},
+		computed: {
+			menuInfo: function () {
+				return ConfigMenu[this.$route.name];
+			}
+		},
+        created () {
+			this.$bus.on('setMenu', (hasMenu) => {
+              this.hasMenu = hasMenu;
+            });
+        }
+	}
   </script>
 
 
@@ -45,4 +50,9 @@
     .mu-bottom-sheet {
       background-color: fade(grey, 10%);
     }
+
+  .mu-appbar{
+    color: white;
+    background-color: @grey900;
+  }
 </style>

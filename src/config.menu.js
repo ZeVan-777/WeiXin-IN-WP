@@ -16,11 +16,13 @@ export default {
 		icons: [
 			{
 				name: 'person_add',
-				title: '添加朋友'
+				title: '添加朋友',
+				href: 'add'
 			},
 			{
 				name: 'search',
-				title: '搜索'
+				title: '搜索',
+				href: 'search'
 			}
 		],
 		items: defaultItems

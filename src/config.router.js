@@ -1,5 +1,6 @@
 import Home from './views/Home.vue'
 import MsgList from './views/MsgList.vue'
+import AddPerson from './views/AddPerson.vue'
 
 export default [
 	{
@@ -10,5 +11,9 @@ export default [
 			{path: 'nearby', name: 'nearby', component: MsgList},
 			{path: 'personal', name: 'personal', component: MsgList}
 		]
+	},
+	{
+		path: '/add',
+		component: AddPerson
 	}
 ]
