@@ -10,7 +10,7 @@ import TopNav from './TopNav'
 
 export default {
 	components: {
-		'top-nav': TopNav
+        TopNav
     }
 }
 </script>
