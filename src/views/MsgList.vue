@@ -1,12 +1,14 @@
 <template>
+<div>
     <mu-list v-if="msgList">
-        <mu-list-item v-for="msg in msgList"
+        <mu-list-item v-for="msg in msgList" :key="msg.title"
             :title="msg.title" disableRipple>
             <mu-avatar slot="leftAvatar" :src="msg.avatar"/>
             <span slot="describe">{{ msg.lastMsg }}</span>
             <p slot="right">{{ msg.time|formatTime }}</p>
         </mu-list-item>
     </mu-list>
+</div>
 </template>
 
 <script>

@@ -64,7 +64,7 @@
         bottom: 0;
         width: 100%;
 
-        background-color: fade(grey, 10%);
+        background-color: fade(#424242, 90%);
         z-index: 99999999;
 
         transition: height .45s cubic-bezier(.23,1,.32,1);

@@ -30,6 +30,10 @@
 <style lang="less">
   @import "../node_modules/muse-ui/less/colors.less";
 
+  body, html {
+    overflow-y: hidden;
+  }
+
     .mu-tabs{
       background-color: @grey800;
     }
@@ -43,7 +47,7 @@
     }
 
     .mu-bottom-sheet {
-      background-color: fade(grey, 10%);
+      background-color: fade(@grey800, 90%);
     }
 
   .mu-appbar{

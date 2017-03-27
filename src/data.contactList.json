@@ -1,30 +1,22 @@
 [
   {
-    "title": "朋友推荐信息",
-    "avatar": ""
-  },
-  {
-    "title": "群聊",
-    "avatar": ""
-  },
-  {
-    "title": "标签",
-    "avatar": ""
-  },
-  {
-    "title": "公众账号",
-    "avatar": ""
-  },
-  {
     "title": "A君",
-    "avatar": ""
+    "avatar": "http://img1.imgtn.bdimg.com/it/u=904577265,1887082948&fm=23&gp=0.jpg"
   },
   {
     "title": "C酱",
-    "avatar": ""
+    "avatar": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSd1Fh8eZYQWnykQ9NRKrGcM1h5u_6QvGkrl6EwXWFRrd59_XzgBg"
   },
   {
     "title": "E桑",
-    "avatar": ""
+    "avatar": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTwLIfX5owjATDjfSELakTKwqDyDJlzX6wBfbTRlRAHrEz5X2_odw"
+  },
+  {
+    "title": "F卡",
+    "avatar": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSfclvfUF5S8DADQdlzuoCwYzEMYJtqVkCewYEf06U3CPbHLjBJ"
+  },
+  {
+    "title": "J克",
+    "avatar": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTRMS02hQ-2UIZyyjcTJSS0RAv8TzVkLcj0ftiRnw6nV0z-e_oX"
   }
 ]
