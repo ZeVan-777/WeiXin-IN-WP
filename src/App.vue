@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <bottom-menu :menu-info="menuInfo" v-if="hasMenu"></bottom-menu>
+    <bottom-menu :menu-info="menuInfo" v-if="menuInfo"></bottom-menu>
   </div>
   </template>
 
@@ -22,12 +22,7 @@
 			menuInfo: function () {
 				return ConfigMenu[this.$route.name];
 			}
-		},
-        created () {
-			this.$bus.on('setMenu', (hasMenu) => {
-              this.hasMenu = hasMenu;
-            });
-        }
+		}
 	}
   </script>
 

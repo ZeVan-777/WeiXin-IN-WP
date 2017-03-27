@@ -1,5 +1,5 @@
 <template>
-    <mu-tabs :value="activeTab" @change="handleTabChange" lineClass="hide">
+    <mu-tabs :value="activeTab" @change="handleTabChange" lineClass="hide" class="top-nav">
         <mu-tab value="messages" icon="chat_bubble_outline" href="#/messages"/>
         <mu-tab value="contacts" icon="contacts" href="#/contacts"/>
         <mu-tab value="nearby" icon="near_me" href="#/nearby"/>
@@ -23,9 +23,14 @@
     }
 </script>
 
-<style>
+<style lang="less">
     .hide {
         visibility: hidden;
+    }
+    .top-nav {
+        .mu-icon{
+            font-size: 30px;
+        }
     }
 </style>
 

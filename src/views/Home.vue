@@ -13,16 +13,7 @@ import TopNav from './TopNav'
 export default {
 	components: {
         TopNav
-    },
-  beforeRouteEnter (to, from, next) {
-		next(vm => {
-		    vm.$bus.emit('setMenu', true);
-        });
-	},
-  beforeRouteLeave (to, from, next) {
-    this.$bus.emit('setMenu', false);
-    next();
-  }
+    }
 }
 </script>
 
