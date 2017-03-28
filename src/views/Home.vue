@@ -1,13 +1,14 @@
 <template>
     <div>
         <top-nav @change="slideDirc = arguments[0] > 0 ? 'Left':'Right'"></top-nav>
-        <transition mode="out-in"
-            :enter-active-class="slideEnterCls"
-            :leave-active-class="slideLeaveCls">
-            <router-view class="fill-screen"
-                         v-finger:swipe="swipe"
-                         v-finger:press-move="pressMove.bind(this)">
-            </router-view>
+        <transition :enter-active-class="slideEnterCls" :leave-active-class="slideLeaveCls"
+            mode="out-in">
+            <keep-alive>
+                <router-view class="fill-screen"
+                             v-finger:swipe="swipe"
+                             v-finger:press-move="pressMove.bind(this)">
+                </router-view>
+            </keep-alive>
         </transition>
     </div>
 </template>
@@ -25,7 +26,8 @@ export default {
           animateCls: [
             {leave: 'animated slideOutLeft',enter: 'animated slideInRight'},
             {leave: 'animated slideOutRight',enter: 'animated slideInLeft'}
-          ]
+          ],
+          pressMoveDeltaX: 0
         }
     },
     computed: {
@@ -46,17 +48,35 @@ export default {
 		},
     methods: {
 	    swipe (evt) {
-	    	// Home tell slide Direction to top nav and set slide style
-		    var dirc = evt.direction;
-		    var indexOffset = 1;
-            if("Right" == dirc){
-		        indexOffset = -1;
+	    	// only need to know the swipe distance
+	    	var deltaX = this.pressMoveDeltaX;
+            var viewStyle = this.getViewElement().style;
+
+	    	this.pressMoveDeltaX = 0;
+			viewStyle.left = '0px';
+
+			if(Math.abs(deltaX) < 135){
+            	viewStyle.transition = 'left 0.5s ease-out';
+            	return;
             }
-            this.$bus.emit('homeSlide', indexOffset);
+
+
+            // Home tell slide Direction to top nav and set slide style
+			var dirc = evt.direction;
+			var indexOffset = 1;
+			if("Right" == dirc){
+				indexOffset = -1;
+			}
+			this.$bus.emit('homeSlide', indexOffset);
             this.slideDirc = dirc;
 		},
       pressMove (evt) {
-
+        this.pressMoveDeltaX += evt.deltaX;
+        this.getViewElement().style.left = this.pressMoveDeltaX + 'px';
+      },
+      getViewElement () {
+        var children = this.$el.children;
+		return children[children.length-1];
       }
     }
 }

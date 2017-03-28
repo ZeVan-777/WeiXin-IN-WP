@@ -31,10 +31,16 @@
         // slide router view base on index
 		index (toIndex, fromIndex) {
 		    var routeName = this.tabs[toIndex].name;
+		    var maxIndex = this.tabs.length - 1;
 		    this.activeTab = routeName;
-		    var dirc = toIndex > fromIndex ? 1 : -1
-			this.$emit('change', dirc);
-			this.$router.replace({name: routeName});
+
+		    var dirc = toIndex > fromIndex ? 1 : -1;
+		    if(maxIndex == Math.abs(toIndex - fromIndex)){
+		        dirc = -dirc;
+            }
+
+          this.$emit('change', dirc);
+		  this.$router.replace({name: routeName});
         }
       },
       created () {
