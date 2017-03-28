@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueBus from 'vue-bus'
 import MuseUI from 'muse-ui'
+import AlloyFinger from 'alloyfinger/alloy_finger';
+import VueAlloyFinger from 'alloyfinger/vue/alloy_finger.vue'
 
 import 'muse-ui/dist/muse-ui.css'
 import 'muse-ui/dist/theme-dark.css'
@@ -20,6 +22,9 @@ const router = new VueRouter({
 Vue.use(VueRouter)
 Vue.use(VueBus)
 Vue.use(MuseUI)
+Vue.use(VueAlloyFinger, {
+	AlloyFinger
+})
 
 new Vue({
 	el: '#app',

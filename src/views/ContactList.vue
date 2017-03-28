@@ -83,9 +83,7 @@
             color: @color;
             width: 40px;
             height: 40px;
-
-            line-height:40px;
-            vertical-align: center;
+            margin: -13px 0;
         }
     }
 </style>

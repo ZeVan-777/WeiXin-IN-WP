@@ -1,24 +1,47 @@
 <template>
-    <mu-tabs :value="activeTab" @change="handleTabChange" lineClass="hide" class="top-nav">
-        <mu-tab value="messages" icon="chat_bubble_outline" href="#/messages"/>
-        <mu-tab value="contacts" icon="contacts" href="#/contacts"/>
-        <mu-tab value="nearby" icon="near_me" href="#/nearby"/>
-        <mu-tab value="personal" icon="person_outline" href="#/personal"/>
+    <mu-tabs :value="activeTab" lineClass="hide" class="top-nav">
+        <mu-tab v-for="(tab, i) in tabs" :value="tab.name" :key="i" :icon="tab.icon" @click="handleClick(i, tab.name)">
+        </mu-tab>
     </mu-tabs>
 </template>
 
 <script>
 	export default {
 			name: 'top-nav',
-			methods: {
-				handleTabChange (val) {
-					this.activeTab = val;
-				}
-			},
-      computed: {
-        activeTab () {
-        	return this.$route.name;
+			data () {
+			    return {
+			    	tabs: [
+                      {name: "messages", icon: "chat_bubble_outline"},
+                      {name: "contacts", icon: "contacts"},
+					  {name: "nearby", icon: "near_me"},
+					  {name: "personal", icon: "person_outline"},
+                    ],
+                  index: 0,
+                  activeTab: "messages",
+                }
+            },
+      methods: {
+		handleClick (i, name) {
+			this.index = i;
+			// active tab immediately after click tab
+			this.activeTab = name;
         }
+      },
+      watch: {
+        // slide router view base on index
+		index (toIndex, fromIndex) {
+		    var routeName = this.tabs[toIndex].name;
+		    this.activeTab = routeName;
+		    var dirc = toIndex > fromIndex ? 1 : -1
+			this.$emit('change', dirc);
+			this.$router.replace({name: routeName});
+        }
+      },
+      created () {
+        this.$bus.on('homeSlide', (dirc) => {
+        	var size = this.tabs.length;
+            this.index = ((size + this.index) + dirc) % size;
+        });
       }
     }
 </script>

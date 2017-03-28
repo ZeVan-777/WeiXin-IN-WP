@@ -59,7 +59,7 @@ export default {
 
         .nears {
             height: percentage(1/2);
-            /* 小于最小像素 1px 也无法渲染，大屏幕可添加媒体查询适应*/
+            /* 小于最小像素 1px 也无法渲染，大屏幕可添加媒体查询适应 */
             width: 49.8%;
             padding: 0;
 

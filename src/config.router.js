@@ -9,6 +9,8 @@ import AddPerson from './views/AddPerson.vue'
 export default [
 	{
 		path: '/', component: Home,
+		// without HomePage temporarily
+		redirect: '/messages',
 		children: [
 			{path: 'messages', name: 'messages', component: MsgList},
 			{path: 'contacts', name: 'contacts', component: ContactList},
