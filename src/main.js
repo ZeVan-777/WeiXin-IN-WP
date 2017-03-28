@@ -5,6 +5,8 @@ import MuseUI from 'muse-ui'
 import AlloyFinger from 'alloyfinger/alloy_finger';
 import VueAlloyFinger from 'alloyfinger/vue/alloy_finger.vue'
 
+import VueScroller from 'scroller'
+
 import 'muse-ui/dist/muse-ui.css'
 import 'muse-ui/dist/theme-dark.css'
 
@@ -25,6 +27,8 @@ Vue.use(MuseUI)
 Vue.use(VueAlloyFinger, {
 	AlloyFinger
 })
+
+Vue.component('scroll', VueScroller);
 
 new Vue({
 	el: '#app',

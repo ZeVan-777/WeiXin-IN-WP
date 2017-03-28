@@ -1,20 +1,21 @@
 <template>
-<div class="contacts">
-    <mu-list v-if="contactList">
-        <mu-list-item v-for="item in defaults" :key="item.title"
-            :title="item.title" disableRipple>
-            <mu-icon slot="left" :value="item.icon" :style="{backgroundColor: item.bgColor}"></mu-icon>
-        </mu-list-item>
-        <mu-list-item v-for="(item, i) in addAlphaList" :key="i"
-            :title="item.avatar ? item.title : ''" disableRipple>
-            <mu-avatar slot="left" :src="item.avatar" v-if="item.avatar"></mu-avatar>
-            <template v-else>
-                <div class="alpha">
-                    {{ item.title }}
+<div class="contacts" >
+    <scroll ref="scroller"
+    :on-refresh="refresh" refreshText="">
+            <mu-list-item v-for="item in defaults" :key="item.title"
+                          :title="item.title" disableRipple>
+                <mu-icon slot="left" :value="item.icon" :style="{backgroundColor: item.bgColor}"></mu-icon>
+            </mu-list-item>
+            <mu-list-item v-for="(item, i) in addAlphaList" :key="i"
+                          :title="item.avatar ? item.title : ''" disableRipple>
+                <mu-avatar slot="left" :src="item.avatar" v-if="item.avatar"></mu-avatar>
+                <template v-else>
+                    <div class="alpha">
+                        {{ item.title }}
                 </div>
-            </template>
-        </mu-list-item>
-    </mu-list>
+                </template>
+            </mu-list-item>
+    </scroll>
     <div class="alphaAnchor">
 
     </div>
@@ -53,12 +54,21 @@
 
             return outList;
           }
-        }
+        },
+      methods: {
+    		refresh () {
+                this.$refs.scroller.finishPullToRefresh()
+            }
+      }
     }
 </script>
 
 <style lang="less">
     .contacts{
+        .spinner-holder {
+            visibility: hidden;
+        }
+
         .mu-icon{
             color: white;
             display: block;

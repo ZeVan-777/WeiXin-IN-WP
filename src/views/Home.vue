@@ -3,12 +3,10 @@
         <top-nav @change="slideDirc = arguments[0] > 0 ? 'Left':'Right'"></top-nav>
         <transition :enter-active-class="slideEnterCls" :leave-active-class="slideLeaveCls"
             mode="out-in">
-            <keep-alive>
-                <router-view class="fill-screen"
-                             v-finger:swipe="swipe"
-                             v-finger:press-move="pressMove.bind(this)">
-                </router-view>
-            </keep-alive>
+            <router-view class="fill-screen" :ref="$route.name"
+                         v-finger:swipe="swipe"
+                         v-finger:press-move="pressMove.bind(this)">
+            </router-view>
         </transition>
     </div>
 </template>
@@ -27,7 +25,8 @@ export default {
             {leave: 'animated slideOutLeft',enter: 'animated slideInRight'},
             {leave: 'animated slideOutRight',enter: 'animated slideInLeft'}
           ],
-          pressMoveDeltaX: 0
+          pressMoveDeltaX: 0,
+          pressMoveDeltaY: 0
         }
     },
     computed: {
@@ -53,6 +52,7 @@ export default {
             var viewStyle = this.getViewElement().style;
 
 	    	this.pressMoveDeltaX = 0;
+            this.pressMoveDeltaY = 0;
 			viewStyle.left = '0px';
 
 			if(Math.abs(deltaX) < 135){
@@ -71,8 +71,16 @@ export default {
             this.slideDirc = dirc;
 		},
       pressMove (evt) {
+//        var view = this.$refs[this.$route.name];
+//        var scrollable = view.$refs.scroller;
+//        if(scrollable){
+//            console.log(scrollable);
+//        }
         this.pressMoveDeltaX += evt.deltaX;
-        this.getViewElement().style.left = this.pressMoveDeltaX + 'px';
+        this.pressMoveDeltaY += evt.deltaY;
+        if(Math.abs(this.pressMoveDeltaX) > 20 && Math.abs(this.pressMoveDeltaY) < 10){
+          this.getViewElement().style.left = this.pressMoveDeltaX + 'px';
+        }
       },
       getViewElement () {
         var children = this.$el.children;

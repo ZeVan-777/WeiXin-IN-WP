@@ -27,6 +27,10 @@ module.exports = {
 				loader: 'babel-loader',
 				exclude: /node_modules/
 			},
+			{
+				test: /vue-scroller.src.*?js$/,
+				loader: 'babel-loader'
+			},
 			{ test: /\.css$/, loader: "style-loader!css-loader" },
 			{
 				test: /\.js$/,
@@ -47,7 +51,8 @@ module.exports = {
 		modules: [path.resolve(__dirname, './node_modules')],
 		alias: {
 			'vue$': 'vue/dist/vue.common.js',
-			'muse-components': 'muse-ui/src'
+			'muse-components': 'muse-ui/src',
+			'scroller$': 'vue-scroller/src'
 		}
 	},
   resolveLoader: {

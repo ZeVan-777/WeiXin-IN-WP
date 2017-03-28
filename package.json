@@ -15,7 +15,8 @@
     "muse-ui": "^2.0.0-rc.5",
     "vue": "^2.2.5",
     "vue-bus": "^0.3.0",
-    "vue-router": "^2.3.0"
+    "vue-router": "^2.3.0",
+    "vue-scroller": "^2.1.2"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",

@@ -17,10 +17,18 @@
 					  {name: "personal", icon: "person_outline"},
                     ],
                   index: 0,
-                  activeTab: "messages",
+                  activeTab: this.$route.name,
                 }
             },
       methods: {
+        initIndex　() {
+        	var routeName = this.$route.name;
+            this.tabs.forEach((item, index) => {
+            	if(item.name == routeName){
+            		return index;
+                }
+            })
+        },
 		handleClick (i, name) {
 			this.index = i;
 			// active tab immediately after click tab
