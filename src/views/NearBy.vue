@@ -1,11 +1,17 @@
 <template>
     <div class="nearby bg-container">
-        <div class="main" style="width: 100%"></div>
+        <div class="main" style="width: 100%">
+            <mu-list>
+                <mu-list-item title="朋友圈">
+                    <mu-icon slot="left" value="camera"></mu-icon>
+                </mu-list-item>
+            </mu-list>
+        </div>
         <div class="others">
-            <div class="nears"></div>
-            <div class="nears"></div>
-            <div class="nears"></div>
-            <div class="nears"></div>
+            <a class="nears" v-for="(near, i) in nears" :key="i">
+                <mu-icon :value="near.icon"></mu-icon>
+                <p class="title">{{ near.title }}</p>
+            </a>
         </div>
     </div>
 </template>
@@ -17,19 +23,19 @@ export default {
 			nears: [
 				{
 					title: "扫一扫",
-					img: ''
+					icon: 'flip'
 				},
 				{
 					title: "摇一摇",
-					img: ''
+                    icon: 'screen_rotation'
 				},
 				{
 					title: "附近的人",
-					img: ''
+                    icon: 'wc'
 				},
 				{
 					title: "游戏中心",
-					img: ''
+					icon: 'gamepad'
 				}
 			]
 		}
@@ -55,6 +61,16 @@ export default {
         .main {
             height: percentage(1/3);
             background-color: black;
+
+            .mu-list{
+                padding-left: 10%;
+                height: 100%;
+                display: flex;
+                align-items:center;
+            }
+            .mu-item-title{
+                font-size: 20px;
+            }
         }
 
         .nears {
@@ -66,6 +82,28 @@ export default {
             margin: 1px 0 0;
 
             background-color: black;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content:center;
+
+            * {
+                text-align: center;
+            }
+            .mu-icon{
+                color: cornflowerblue;
+            }
+            .title{
+                margin-top: 5px;
+                color: white;
+            }
+
+
+        }
+
+        .mu-icon {
+            font-size: 40px;
         }
     }
 </style>

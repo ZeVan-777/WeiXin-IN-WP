@@ -1,7 +1,6 @@
 <template>
 <div class="contacts" >
-    <scroll ref="scroller"
-    :on-refresh="refresh" refreshText="">
+    <scroll ref="scroller" refreshText="" :noDataText="contactList.length + '位联系人'">
             <mu-list-item v-for="item in defaults" :key="item.title"
                           :title="item.title" disableRipple>
                 <mu-icon slot="left" :value="item.icon" :style="{backgroundColor: item.bgColor}"></mu-icon>
@@ -55,10 +54,8 @@
             return outList;
           }
         },
-      methods: {
-    		refresh () {
-                this.$refs.scroller.finishPullToRefresh()
-            }
+      mounted () {
+        this.$refs.scroller.finishPullToRefresh()
       }
     }
 </script>
