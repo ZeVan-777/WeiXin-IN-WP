@@ -25,7 +25,8 @@
         	var routeName = this.$route.name;
             this.tabs.forEach((item, index) => {
             	if(item.name == routeName){
-            		return index;
+            		this.index = index;
+            		return;
                 }
             })
         },
@@ -52,10 +53,15 @@
         }
       },
       created () {
+		this.initIndex();
+
         this.$bus.on('homeSlide', (dirc) => {
         	var size = this.tabs.length;
             this.index = ((size + this.index) + dirc) % size;
         });
+      },
+      mounted () {
+
       }
     }
 </script>

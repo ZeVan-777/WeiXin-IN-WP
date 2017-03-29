@@ -55,8 +55,8 @@ export default {
             this.pressMoveDeltaY = 0;
 			viewStyle.left = '0px';
 
-			if(Math.abs(deltaX) < 135){
-            	viewStyle.transition = 'left 0.5s ease-out';
+			if(Math.abs(deltaX) < 100){
+//            	viewStyle.transition = 'left 0.5s ease-out';
             	return;
             }
 

@@ -21,8 +21,7 @@ export default {
 			},
 			{
 				name: 'search',
-				title: '搜索',
-				href: 'search'
+				title: '搜索'
 			}
 		],
 		items: defaultItems
